@@ -1,0 +1,34 @@
+{
+  "name": "react-redux-course",
+  "version": "1.0.0",
+  "description": "React with Redux course",
+  "main": "webpack.config.js",
+  "dependencies": {
+    "react": "^16.4.2",
+    "react-dom": "^16.4.2"
+  },
+  "devDependencies": {
+    "babel": "^6.23.0",
+    "babel-core": "^6.26.3",
+    "babel-loader": "^7.1.5",
+    "babel-preset-latest-minimal": "^1.1.2",
+    "babel-preset-react": "^6.24.1",
+    "json-loader": "^0.5.7",
+    "webpack": "^4.16.5",
+    "webpack-cli": "^3.1.0"
+  },
+  "scripts": {
+    "webpack": "webpack"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/omiguelperez/react-redux-course.git"
+  },
+  "keywords": [],
+  "author": "Oscar Pérez <mr.omiguelperez@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/omiguelperez/react-redux-course/issues"
+  },
+  "homepage": "https://github.com/omiguelperez/react-redux-course#readme"
+}
