@@ -2,11 +2,17 @@
 
 const container = document.getElementById('app')
 
+const CountContext = React.createContext(0)
+
 /* Pure Component with UI */
 function HelloComponent (props) {
-  return <h1 id="title" onClick={props.handleClick}>
-    Hello {props.name} {props.count}
-  </h1>
+  return <CountContext.Consumer>
+    {
+      count => <h1 id="title" onClick={props.handleClick}>
+        Hello {props.name} {count}
+      </h1>
+    }
+  </CountContext.Consumer>
 }
 
 /* State component with Logic */
@@ -23,7 +29,7 @@ class MyComponent extends React.Component {
 
   componentDidMount () {
     console.log('El componente se ha montado!')
-    document.addEventListener('click', this.handleClick)
+    // document.addEventListener('click', this.handleClick)
   }
 
   shouldComponentUpdate (nextProps, nextState) {
@@ -54,7 +60,7 @@ class MyComponent extends React.Component {
   }
 
   componentWillUnmount () {
-    document.removeEventListener('click', this.handleClick)
+    // document.removeEventListener('click', this.handleClick)
   }
 
   handleClick () {
@@ -64,11 +70,13 @@ class MyComponent extends React.Component {
   }
   
   render () {
-    return <HelloComponent
-      name={this.props.name}
-      count={this.state.count}
-      handleClick={this.handleClick}
-    />
+    return <CountContext.Provider value={this.state.count}>
+      <HelloComponent
+        name={this.props.name}
+        count={this.state.count}
+        handleClick={this.handleClick}
+      />
+    </CountContext.Provider>
   }
 }
 
