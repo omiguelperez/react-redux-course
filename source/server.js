@@ -3,11 +3,43 @@
 import http from 'http'
 import React from 'react'
 import { renderToString } from 'react-dom/server'
+import {
+  ServerRouter,
+  createServerRenderContext
+} from 'react-router'
+import Pages from './pages/containers/Pages.jsx'
 
 const port = process.env.PORT || 3000
 
 function requestHandler (req ,res) {
-  const html = renderToString(<h1>Hello World!</h1>)
+  const context = createServerRenderContext()
+
+  let html = renderToString(
+    <ServerRouter location={req.url} context={context}>
+      <Pages />
+    </ServerRouter>
+  )
+
+  const result = context.getResult()
+
+  res.setHeader('Content-Type', 'text/html')
+
+  if (result.redirect) {
+    res.writeHead(301, {
+      Location: result.redirect.pathname
+    })
+    res.end()
+  }
+
+  if (result.missed) {
+    res.writeHead(404)
+
+    html = renderToString(
+      <ServerRouter location={req.url} context={context}>
+        <Pages />
+      </ServerRouter>
+    )
+  }
 
   res.write(html)
   res.end()

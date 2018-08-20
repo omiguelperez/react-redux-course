@@ -9,14 +9,14 @@ module.exports = {
     path: path.join(__dirname, '..', 'built', 'server')
   },
   module: {
-    rules: [
+    loaders: [
       {
         test: /\.json$/,
         loader: 'json'
       },
       {
         test: /\.jsx?$/,
-        loader: 'babel-loader',
+        loader: 'babel',
         exclude: /(node_modules)/,
         query: {
           presets: ['latest-minimal', 'react']
