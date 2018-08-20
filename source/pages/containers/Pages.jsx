@@ -4,7 +4,8 @@ import React from 'react'
 import { Match, Miss } from 'react-router'
 
 import Home from './Home.jsx'
-import About from './About.jsx'
+import Profile from './Profile.jsx'
+import Post from './Post.jsx'
 import Error404 from './Error404.jsx'
 
 function Pages () {
@@ -16,9 +17,14 @@ function Pages () {
       component={Home}
     />
     <Match 
-      pattern="/about"
+      pattern="/post/:id"
       exactly
-      component={About}
+      component={Post}
+    />
+    <Match 
+      pattern="/user/:id"
+      exactly
+      component={Profile}
     />
     <Miss component={Error404} />
    </main>

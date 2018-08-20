@@ -3,15 +3,15 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router'
 
-class Home extends Component {
+class Post extends Component {
   render () {
     return (
-      <section name="home">
-        <h1>Home</h1>
-        <Link to="/user">Go to profile</Link>
+      <section name="post">
+        <h1>Post</h1>
+        <Link to="/">Go to home</Link>
       </section>
     )
   }
 }
 
-export default Home
+export default Post
