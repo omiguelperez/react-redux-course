@@ -2,11 +2,16 @@
 
 import http from 'http'
 import React from 'react'
-import { renderToString } from 'react-dom/server'
+import { 
+  renderToString,
+  renderToStaticMarkup
+ } from 'react-dom/server'
 import {
   ServerRouter,
   createServerRenderContext
 } from 'react-router'
+
+import Layout from './pages/components/Layout.jsx'
 import Pages from './pages/containers/Pages.jsx'
 
 const port = process.env.PORT || 3000
@@ -41,7 +46,11 @@ function requestHandler (req ,res) {
     )
   }
 
-  res.write(html)
+  res.write(
+    renderToStaticMarkup(
+      <Layout title="Aplicación" content={html} />
+    )
+  )
   res.end()
 }
 

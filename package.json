@@ -7,11 +7,15 @@
     "isomorphic-fetch": "^2.2.1",
     "react": "15.3.2",
     "react-dom": "15.3.2",
-    "react-router": "4.0.0-alpha.5"
+    "react-router": "4.0.0-alpha.5",
+    "serve": "^9.6.0"
   },
   "devDependencies": {
     "babel-core": "6.18.2",
     "babel-loader": "6.2.7",
+    "babel-plugin-transform-es2015-modules-commonjs": "^6.26.2",
+    "babel-preset-es2015": "^6.24.1",
+    "babel-preset-es2017": "^6.24.1",
     "babel-preset-latest-minimal": "1.1.2",
     "babel-preset-react": "6.16.0",
     "json-loader": "0.5.4",
@@ -21,7 +25,9 @@
   "scripts": {
     "build": "webpack",
     "prestart": "npm run build",
-    "start": "node ./built/server/index.js"
+    "sfs": "serve ./built/statics",
+    "bff": "node ./built/server/index.js",
+    "start": "npm run sfs & npm run bff"
   },
   "repository": {
     "type": "git",
